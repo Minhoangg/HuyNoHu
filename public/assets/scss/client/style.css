@@ -1,0 +1,103 @@
+@charset "UTF-8";
+#video_login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1000000;
+}
+
+#wellcome_wrap {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#wellcome_wrap .wellcome {
+  margin-bottom: 50px;
+}
+#wellcome_wrap .wellcome img {
+  max-width: 100%; /* Hình ảnh sẽ không vượt quá 100% chiều rộng của phần tử chứa nó */
+  height: auto; /* Giữ tỷ lệ chiều cao và chiều rộng */
+  min-width: 200px; /* Đảm bảo hình ảnh không quá nhỏ */
+}
+#wellcome_wrap .wellcome .wellcome_button div {
+  text-align: center;
+}
+#wellcome_wrap .wellcome .wellcome_button div .button_login {
+  width: 165px;
+  padding: 5px 40px;
+  background-image: -webkit-linear-gradient(-90deg, #fcebb5, #f6c300 25%, #f9a800 85%, #ffec72 115%);
+  background-image: linear-gradient(-90deg, #fcebb5, #f6c300 25%, #f9a800 85%, #ffec72 115%);
+  margin: 10px 5px;
+}
+#wellcome_wrap .wellcome .wellcome_button div .button_register {
+  width: 165px;
+  padding: 5px 40px;
+  margin: 10px 5px;
+  background-image: -webkit-linear-gradient(-90deg, #fcebb5, #f6c300 25%, #f9a800 85%, #ffec72 115%);
+  background-image: linear-gradient(-90deg, #fcebb5, #f6c300 25%, #f9a800 85%, #ffec72 115%);
+}
+
+#login_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#login_wrap .login_box {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+#login_wrap .login_box form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#login_wrap .login_box form .mb-3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 0px 10px;
+}
+#login_wrap .login_box form .mb-3 i {
+  font-size: 18px;
+  color: #2575fc;
+}
+#login_wrap .login_box form .mb-3 input {
+  border-radius: 10px;
+}
+#login_wrap .login_box form .mb-3 .form-control {
+  padding: 10px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border: none;
+}
+#login_wrap .login_box form .mb-3 .form-control:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
+  outline: none;
+}
+#login_wrap .login_box form .btn-primary {
+  background-image: -webkit-linear-gradient(-90deg, #fcebb5, #f6c300 25%, #f9a800 85%, #ffec72 115%);
+  background-image: linear-gradient(-90deg, #fcebb5, #f6c300 25%, #f9a800 85%, #ffec72 115%);
+  width: 100%;
+  border: none;
+  padding: 12px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/*# sourceMappingURL=style.css.map */
