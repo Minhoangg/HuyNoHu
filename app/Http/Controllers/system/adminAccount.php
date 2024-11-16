@@ -7,22 +7,22 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class userController extends Controller
+class adminAccount extends Controller
 {
     public function getAll()
     {
-        // Lấy toàn bộ danh sách user từ bảng users
-        $users = User::where('role', 3)->get();
-
-
+        // Lấy toàn bộ danh sách user có role = 2 từ bảng users
+        $users = User::where('role', 2)->get();
+    
         // Truyền danh sách user sang view
-        return view('admin.user.userList', compact('users'));
+        return view('admin.adminAccount.adminAccountList', compact('users'));
     }
+    
 
 
     public function create()
     {
-        return view('admin.user.userAdd');
+        return view('admin.adminAccount.adminAccountAdd');
     }
 
     public function createHandle(Request $request)
@@ -52,7 +52,7 @@ class userController extends Controller
             'name' => $validatedData['name'],
             'phone_number' => $validatedData['phone'],  // Cung cấp giá trị cho phone_number
             'password' => Hash::make($validatedData['password']),
-            'role' => 3,
+            'role' => 2,
             'coin' => $validatedData['coin'],
         ]);
 

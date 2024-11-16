@@ -7,12 +7,13 @@
 <link rel="stylesheet" href="{{ asset('assets/css/fonts.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
 
-<div class="container d-flex  justify-content-center align-items-center" style="min-height: 100vh">
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh">
     <div class="page-inner" style="width: 60%; max-width: 600px;">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <form method="post" action="">
+                    <form method="post" action="{{ route('system.login-submit') }}">
                         @csrf
                         <div class="card-header">
                             <div class="card-title">Đăng nhập quản trị</div>
@@ -21,15 +22,15 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="email">Tên đăng nhập :</label>
-                                        <input type="text" class="form-control" name="email"
-                                            value="{{ old('email') }}" placeholder="Nhập email người dùng">
-                                        @error('email')
+                                        <label for="username">Tên đăng nhập :</label>
+                                        <input type="text" class="form-control" name="username"
+                                            value="{{ old('username') }}" placeholder="Nhập tên đăng nhập">
+                                        @error('username')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="password">Mật Khẩu</label>
+                                        <label for="password">Mật khẩu</label>
                                         <input type="password" class="form-control" name="password"
                                             value="{{ old('password') }}" placeholder="Nhập mật khẩu">
                                         @error('password')
