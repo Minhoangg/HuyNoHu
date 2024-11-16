@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('phone_number');
             $table->string('password');
             $table->integer('role');
+            $table->integer('coin');
             $table->timestamps();
         });
 

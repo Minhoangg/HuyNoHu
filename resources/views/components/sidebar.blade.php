@@ -1,9 +1,9 @@
-<div class="sidebar" data-background-color="dark">
+<div class="sidebar">
     <div class="sidebar-logo">
         <!-- Logo Header -->
-        <div class="logo-header" data-background-color="dark">
+        <div class="logo-header">
             <a href="index.html" class="logo">
-                <img src="assets/img/kaiadmin/logo_light.svg" alt="navbar brand" class="navbar-brand" height="20" />
+                <img src="{{asset('assets/img/logo.jpg')}}" alt="navbar brand" class="navbar-brand" height="60" />
             </a>
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
@@ -31,7 +31,13 @@
                 <li class="nav-item">
                     <a href="{{route('system.user-getall')}}">
                         <i class="fas fa-user"></i>
-                        <p>Tài Khoản</p>
+                        <p>Admin</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('system.user-getall')}}">
+                        <i class="fas fa-user"></i>
+                        <p>Người dùng</p>
                     </a>
                 </li>
                 <li class="nav-item">

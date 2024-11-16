@@ -22,18 +22,21 @@ class UserSeeder extends Seeder
                 'phone_number' => 123456789,
                 'password' => Hash::make('password123'),
                 'role' => 1, // 1: Superadmin
+                'coin' => 100, // 1: Superadmin
             ],
             [
                 'name' => 'Admin',
                 'phone_number' => 987654321,
                 'password' => Hash::make('password123'),
-                'role' => 2, // 2: Admin
+                'role' => 1, // 1: Superadmin
+                'coin' => 100, // 2: Admin
             ],
             [
                 'name' => 'Regular User',
                 'phone_number' => 555666777,
                 'password' => Hash::make('password123'),
-                'role' => 3, // 3: User
+                'role' => 1, // 1: Superadmin
+                'coin' => 100, // 3: User
             ],
         ];
 

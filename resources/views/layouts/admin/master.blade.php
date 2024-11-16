@@ -3,9 +3,9 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Kaiadmin - Bootstrap 5 Admin Dashboard</title>
+    <title>NETSLOT</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
-    <link rel="icon" href="{{asset('assets/img/kaiadmin/favicon.ico')}}" type="image/x-icon" />
+    <link rel="icon" href="{{asset('assets/img/logo.jpg')}}" type="image/x-icon" />
 
     <!-- Fonts and icons -->
     @livewireStyles
@@ -66,7 +66,6 @@
 <script src="{{asset('assets/js/kaiadmin.min.js')}}"></script>
 
 <script src="{{asset('assets/js/setting-demo.js')}}"></script>
-<script src="{{asset('assets/js/demo.js')}}"></script>
 <script src="../assets/js/setting-demo2.js"></script>
 <script>
     $(document).ready(function () {
