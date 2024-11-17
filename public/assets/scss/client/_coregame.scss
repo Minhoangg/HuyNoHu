@@ -1,12 +1,18 @@
 .core-game-client {
-    height: 100vh;
-    width: 80%;
-    margin: 0 auto;
-    padding-top: 5%;
+  height: 100vh;
+  padding-top: 5%;
 
     .core-game {
-        border-radius: 10px;
-        border: 4px solid white;
+      flex-wrap: wrap;
+      width: 60%;
+      border-radius: 10px;
+      border: 4px solid white;
+      height: 100%;
+      /* Nếu cần giới hạn chiều cao, đặt giá trị cụ thể, ví dụ: 400px */
+      max-height: 620px;
+      /* Đặt chiều cao tối đa */
+      margin: 0 auto;
+      background-color: rgba($color: #0f9b0f, $alpha: 0.2);
 
         @keyframes animateBg {
             0% {
@@ -112,10 +118,10 @@
           
             .fingerprint {
               position: relative;
-              width: 120px; // Giảm kích thước đáng kể
-              height: 150px; // Giảm kích thước đáng kể
+              width: 80px; /* Giảm kích thước hơn nữa */
+              height: 100px; /* Giảm kích thước hơn nữa */
               background: url(https://img.playbook.com/IqiomQg4exY5aWlDS3672EcidSBHXX-Ei4HGylg9i0k/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzI4OTJhZjg1/LTMzMTItNGI1OC05/YjVkLTBhNGYxMzU0/YWE0Mg);
-              background-size: 120px; // Tương ứng với kích thước mới
+              background-size: 80px; /* Tương ứng với kích thước mới */
           
               &::before {
                 content: "";
@@ -125,7 +131,7 @@
                 width: 100%;
                 height: 100%;
                 background: url(https://img.playbook.com/L3RYf73i1Fwu5y4HqiqQDLvhDOFbUINDLe3PSUvQNUA/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzk0MmIzOGFl/LWFmZmYtNGQ1OS1h/NGFjLTM3YTk4N2Rj/Y2Y0YQ);
-                background-size: 120px; // Điều chỉnh theo kích thước mới
+                background-size: 80px; /* Điều chỉnh theo kích thước mới */
                 animation: animate 4s ease-in-out infinite;
               }
           
@@ -135,24 +141,25 @@
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 4px; // Nhỏ hơn nữa
+                height: 2px; /* Giảm chiều cao hơn nữa */
                 background: #3fefef;
-                border-radius: 4px; // Điều chỉnh tương ứng
-                filter: drop-shadow(0 0 10px #3fefef) drop-shadow(0 0 30px #3fefef);
+                border-radius: 2px; /* Điều chỉnh phù hợp */
+                filter: drop-shadow(0 0 5px #3fefef) drop-shadow(0 0 15px #3fefef);
                 animation: animate_line 4s ease-in-out infinite;
               }
             }
           
             h3 {
               text-transform: uppercase;
-              font-size: 1em; // Kích thước chữ nhỏ hơn
-              letter-spacing: 1px; // Thu hẹp khoảng cách chữ
-              margin-top: 10px; // Giảm khoảng cách trên
+              font-size: 0.8em; /* Kích thước chữ nhỏ hơn */
+              letter-spacing: 0.8px; /* Thu hẹp khoảng cách chữ */
+              margin-top: 5px; /* Giảm khoảng cách trên */
               color: #3fefef;
-              filter: drop-shadow(0 0 10px #3fefef) drop-shadow(0 0 30px #3fefef);
+              filter: drop-shadow(0 0 5px #3fefef) drop-shadow(0 0 15px #3fefef);
               animation: animate_text 0.5s steps(1) infinite;
             }
           }
+          
           
           
           

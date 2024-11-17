@@ -3,34 +3,43 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Game;
 
 class HandleGame extends Component
 {
+    public $id;
     public $percentage = 0;
     public $isLoading = false; // Trạng thái loading
-    public $minRatio = 50; // Tỉ lệ min
-    public $maxRatio = 90;
     public $roundText = ''; // Lưu trữ giá trị Round
-
     public $startTime;
     public $endTime;
 
-    public function generateRandomPercentage($min_percent = 0, $max_percent = 100)
+    public function generateRandomPercentage()
     {
-        $this->isLoading = true; // Bắt đầu loading
 
-        // Trì hoãn trong 10 giây để hiển thị hiệu ứng loading
+        $dataGame = Game::find($this->id);
+
+        $minRatio = $dataGame->min_ratio;
+        $maxRatio = $dataGame->max_ratio;
+
+        $minpercent = $dataGame->min_percent;
+        $maxpercent = $dataGame->max_percent;
+
         sleep(3);
 
-        // Sử dụng đúng tên thuộc tính minRatio và maxRatio
-        $min = rand($this->minRatio, $this->maxRatio);
-        $max = rand($this->minRatio, $this->maxRatio); // Đảm bảo max lớn hơn hoặc bằng min
-
+        $min = rand($minRatio, $maxRatio);
+        $max = rand($minRatio, $maxRatio);
+        
+        // Đảm bảo min luôn nhỏ hơn max
+        if ($min > $max) {
+            list($min, $max) = [$max, $min]; // Hoán đổi nếu min lớn hơn max
+        }
+        
         // Tạo chuỗi hiển thị cho round
         $this->roundText = "Round: $min - $max";
 
         // Sinh ra tỉ lệ ngẫu nhiên sau 10 giây
-        $this->percentage = rand($min_percent, $max_percent);
+        $this->percentage = rand($minpercent, $maxpercent);
         
         $this->isLoading = false; // Kết thúc loading
 
@@ -42,6 +51,7 @@ class HandleGame extends Component
 
         // Cộng thêm 30 phút vào thời gian bắt đầu để tính thời gian kết thúc
         $endTime = $currentDate->copy()->addMinutes(35)->format('H:i');
+
 
         // Gán giá trị cho các biến
         $this->startTime = $startTime;

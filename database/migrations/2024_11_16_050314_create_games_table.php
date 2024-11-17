@@ -23,7 +23,6 @@ class CreateGamesTable extends Migration
             $table->integer('min_ratio');
             $table->integer('max_ratio');
             $table->timestamps();
-            $table->timestamp('last_received_at')->nullable();
             $table->foreign('lobby_id')->references('id')->on('lobbies')->onDelete('cascade');
         });
     }

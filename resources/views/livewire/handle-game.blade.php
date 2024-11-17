@@ -36,8 +36,8 @@ background-size: cover;
     </section>
 
     <div id="language-screen">
-        <div>
-            <button class="btn btn-primary">{{ $roundText ?: 'Round: 0 - 0' }}</button>
+        <div class="">
+            <button class=" text-center btn btn-primary">{{ $roundText ?: 'Round: 0 - 0' }}</button>
             <button class="btn btn-primary">{{ $startTime ?: '00:00' }} - {{ $endTime ?: '00:00' }}</button>
         </div>
         <div id="scan">
@@ -47,5 +47,4 @@ background-size: cover;
         <button id="french-button" wire:click="generateRandomPercentage(50, 100)"
             aria-label="Sélectionner la langue française">Nhận tỉ lệ</button>
     </div>
-
 </div>

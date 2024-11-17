@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\Lobby;
+use App\Livewire\HandleGame;
 
 class WellcomeController extends Controller
 {
@@ -26,5 +27,12 @@ class WellcomeController extends Controller
         // Thay thế getAll() bằng get()
         $games = Game::where('lobby_id', $id)->get(); // Sử dụng get() thay vì getAll()
         return view('client/webdetail', ['games' => $games]);
+    }
+
+    public function getScore($id)
+    {
+        $GameId = $id;
+
+        return view('client.getscoregame', compact('GameId'));
     }
 }
