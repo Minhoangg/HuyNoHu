@@ -11,6 +11,7 @@ class Lobby extends Model
     use HasFactory;
 
     // Danh sách các cột có thể gán giá trị hàng loạt
+    protected $tableName = 'lobbies';
     protected $fillable = ['name', 'image'];
     public function games()
     {
