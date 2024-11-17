@@ -1,17 +1,9 @@
-<div class="core-game"
-    style="
-background-image: url('{{ asset('assets/img/photo_6183962405080515886_y.jpg') }}');
-background-position: center center;
-background-repeat: no-repeat;
-background-size: cover;
-">
-
-
+<div class="core-game" style="background-image: url('{{ asset('assets/img/photo_6183962405080515886_y.jpg') }}'); background-position: center center; background-repeat: no-repeat; background-size: cover;">
     <h1 style="text-align: center; color: yellow">Game nổ hủ</h1>
 
     <section>
         <div class="loader d-flex justify-content-center align-items-center">
-            <h2 class="text-danger"> {{ $percentage  }}%</h2>
+            <h2 class="text-danger"> {{ $percentage }}%</h2>
             <span style="--i:1;"></span>
             <span style="--i:2;"></span>
             <span style="--i:3;"></span>
@@ -40,11 +32,29 @@ background-size: cover;
             <button class=" text-center btn btn-primary">{{ $roundText ?: 'Round: 0 - 0' }}</button>
             <button class="btn btn-primary">{{ $startTime ?: '00:00' }} - {{ $endTime ?: '00:00' }}</button>
         </div>
-        <div id="scan">
+
+        <!-- Phần tử scan (sẽ hiển thị sau 3s khi nhấn nút) -->
+        <div id="scan" style="display: none;">
             <div class="fingerprint"></div>
             <h3> Nhận tỉ lệ</h3>
         </div>
-        <button id="french-button" wire:click="generateRandomPercentage(50, 100)"
-            aria-label="Sélectionner la langue française">Nhận tỉ lệ</button>
+
+        <!-- Nút bấm gọi Livewire action -->
+        <button id="french-button" wire:click="generateRandomPercentage(50, 100)" aria-label="Sélectionner la langue française">Nhận tỉ lệ</button>
     </div>
 </div>
+
+<!-- JavaScript để hiển thị phần tử scan trong 3 giây -->
+<script>
+    document.getElementById('french-button').addEventListener('click', function() {
+        var scanElement = document.getElementById('scan');
+        
+        // Hiển thị phần tử scan
+        scanElement.style.display = 'block';
+
+        // Ẩn phần tử scan sau 3 giây
+        setTimeout(function() {
+            scanElement.style.display = 'none';
+        }, 3000); // 3000ms = 3 giây
+    });
+</script>
