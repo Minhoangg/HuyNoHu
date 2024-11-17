@@ -35,6 +35,9 @@
     height: 100vh;
     padding-top: 5%;
     .container-list-web {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
         width: 60%;
         border-radius: 10px;
         border: 4px solid white;
@@ -51,8 +54,9 @@
         .menu-web {
             display: flex;
             align-items: center;
+            justify-content: center;
             flex-wrap: wrap;
-            margin-left: 6%;
+            margin-left: -20px;
             padding: 0;
             gap: 20px;
             width: 90%;
@@ -75,18 +79,19 @@
     }
 }
 .list-game-client {
-    height: 100vh;
+    min-height: 100vhpx;
     width: 80%;
     margin: 0 auto;
-    padding-top: 5%;
+    padding: 5% 0;
     .list-game {
+        min-height: 400px;
         h1 {
             text-align: center;
             color: white;
             font-weight: 700;
         }
         border-radius: 10px;
-        border: 4px solid white;
+        border: 4px solid rgb(255, 104, 22);
 
         img {
             width: 150px;
@@ -97,8 +102,9 @@
             flex-wrap: wrap;
             gap: 20px;
             width: 100%;
-            margin-left: 7%;
-            max-height: 500px;
+            margin-left: -20px;
+            justify-content: center;
+            max-height: 300px;
             overflow-y: auto;
             overflow-x: hidden;
             list-style: none;
@@ -112,7 +118,8 @@
                 color: white;
             }
             .game-item {
-                max-width: 310px;
+                max-width: 300px;
+                margin-left: 30px;
             }
             .top-game-item {
                 display: flex;
@@ -170,6 +177,20 @@
                 }
             }
         }
+    }
+}
+@media (max-width: 576px) {
+    .list-web-client .container-list-web .menu-web {
+        margin-left: 5%;
+    }
+    .list-game-client .list-game .container-game .game-item {
+        margin-left: -1px;
+    }
+    .list-game-client .list-game .container-game {
+        margin-left: 0;
+    }
+    .list-game-client .list-game {
+        padding: 0;
     }
 }
 

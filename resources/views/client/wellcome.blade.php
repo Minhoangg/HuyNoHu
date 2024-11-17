@@ -1,7 +1,15 @@
 @extends('layouts.client.master-layout')
 
 @section('content')
-<div style="background-color: black;" id="wellcome_wrap" class="container-fluid">
+<div style="
+        background-image: url('{{ asset('assets/img/background5.jpg') }}');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    "
+
+    id="wellcome_wrap" class="container-fluid">
     <div class="wellcome">
         <img src="{{ asset('assets/img/logo_san_hu-removebg.png') }}" alt="">
         <div class="wellcome_button">
