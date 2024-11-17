@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('system.user-getall')}}">
+                    <a href="{{route('system.lobby-list')}}">
                         <i class="fas fa-user"></i>
                         <p>Sảnh game</p>
                     </a>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Game;
+use App\Models\Lobby;
 
 class WellcomeController extends Controller
 {
@@ -11,16 +13,18 @@ class WellcomeController extends Controller
     {
         return view('client/wellcome');
     }
+
     public function home()
     {
-        return view('client/home');
+        // Thay thế getAll() bằng all()
+        $lobbys = Lobby::all(); // Hoặc nếu cần điều kiện có thể dùng $lobbys = Lobby::get();
+        return view('client/home', ['lobbys' => $lobbys]);
     }
+
     public function details($id)
     {
-        return view('client/webdetail');
-    }
-    public function getScore($id)
-    {
-        return view('client/getscoregame');
+        // Thay thế getAll() bằng get()
+        $games = Game::where('lobby_id', $id)->get(); // Sử dụng get() thay vì getAll()
+        return view('client/webdetail', ['games' => $games]);
     }
 }
