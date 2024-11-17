@@ -37,21 +37,24 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $lobby->name }}</td>
                                         <td>
-                                            <img src="{{ $lobby->imgae }}" alt="" width="70px">
+                                            <img src="{{ asset('storage/' . $lobby->image) }}" width="50" height="50" alt="{{ $lobby->title }}">
                                         </td>
                                         <td class="d-flex justify-content-center gap-2">
-                                            <a class="btn btn-warning">Sửa</a>
+                                            <a class="btn btn-warning" href="{{route('system.lobby-edit', $lobby->id)}}">Sửa</a>
                                             <a href=""
                                                 class="btn btn-danger"
                                                 onclick="event.preventDefault(); 
                                                         if (confirm('Bạn có chắc chắn muốn xóa người dùng này?')) {
-                                                            document.getElementById('delete-form-{{ $lobby->id }}').submit();
+                                                            document.getElementById('delete-form-{{$lobby->id}}').submit();
                                                         }">
                                                 Xóa
                                             </a>
 
                                             <!-- Form ẩn để gửi yêu cầu DELETE -->
-                                            <form id="delete-form-{{$lobby->id }}" action="" method="POST" style="display: none;">
+                                            <form
+                                                id="delete-form-{{$lobby->id}}"
+                                                action="{{ route('system.lobby-delete', $lobby->id) }}"
+                                                method="POST" style="display: none;">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
