@@ -101,9 +101,190 @@
 }
 
 .header_client {
-  background: #000000; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #0f9b0f, #000000); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 4px solid rgb(255, 109, 4);
+  background: #000000;
+}
+.header_client .header_client_logo h1 {
+  font-weight: 900;
+  color: rgb(255, 109, 4);
+  text-shadow: 1px 1px 50px #fffc4f;
+}
+.header_client .header_client_logo p {
+  color: #fffc4f;
+  margin-top: -10px;
+}
+.header_client .menu_header_client {
+  display: flex;
+  padding: 10px 20px;
+  font-size: 16px;
+  list-style: none;
+  margin: 0;
+}
+.header_client .menu_header_client a {
+  text-decoration: none;
+  color: white;
+}
+.header_client .menu_header_client .menu-item-client {
+  padding: 10px;
+}
+
+.list-web-client {
+  height: 100vh;
+  padding-top: 5%;
+}
+.list-web-client .container-list-web {
+  width: 60%;
+  border-radius: 10px;
+  border: 4px solid white;
+  height: 100%; /* Nếu cần giới hạn chiều cao, đặt giá trị cụ thể, ví dụ: 400px */
+  max-height: 500px; /* Đặt chiều cao tối đa */
+  margin: 0 auto;
+  background-color: rgba(15, 155, 15, 0.2);
+}
+.list-web-client .container-list-web h1 {
+  text-align: center;
+  color: white;
+  font-weight: 700;
+}
+.list-web-client .container-list-web .menu-web {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: 6%;
+  padding: 0;
+  gap: 20px;
+  width: 90%;
+  height: 70%;
+  overflow-y: auto; /* Kích hoạt cuộn dọc */
+  overflow-x: hidden; /* Ẩn cuộn ngang */
+  scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+  -ms-overflow-style: none; /* Ẩn thanh cuộn trên Internet Explorer */
+}
+.list-web-client .container-list-web .menu-web .item-web-client img {
+  width: 100px;
+}
+.list-web-client .container-list-web .container-show-list-web::-webkit-scrollbar {
+  display: none; /* Ẩn thanh cuộn trên Chrome/Safari */
+}
+
+.list-game-client {
+  height: 100vh;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 5%;
+}
+.list-game-client .list-game {
+  border-radius: 10px;
+  border: 4px solid white;
+}
+.list-game-client .list-game h1 {
+  text-align: center;
+  color: white;
+  font-weight: 700;
+}
+.list-game-client .list-game img {
+  width: 150px;
+  object-fit: cover;
+}
+.list-game-client .list-game .container-game {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  margin-left: 7%;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  list-style: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.list-game-client .list-game .container-game .game-info {
+  width: 50%;
+}
+.list-game-client .list-game .container-game a {
+  text-decoration: none;
+  color: white;
+}
+.list-game-client .list-game .container-game .game-item {
+  max-width: 310px;
+}
+.list-game-client .list-game .container-game .top-game-item {
+  display: flex;
+}
+.list-game-client .list-game .container-game .proportion {
+  position: relative;
+}
+.list-game-client .list-game .container-game .proportion p {
+  position: absolute;
+  top: 40%;
+  margin-left: 36%;
+  font-size: 20px;
+  font-weight: 900;
+}
+.list-game-client .list-game .container-game .proportion img {
+  animation: spin 1s linear infinite;
+}
+.list-game-client .list-game .container-game .bottom-game-item {
+  position: relative;
+}
+.list-game-client .list-game .container-game .bottom-game-item img {
+  margin-top: -125px;
+  width: 307px;
+}
+.list-game-client .list-game .container-game .bottom-game-item .process-bar {
+  position: absolute;
+  top: 45%;
+  left: 4%;
+  transform: translateY(-50%);
+  width: 66%;
+  height: 16px;
+  background-color: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  border-radius: 15px;
+}
+.list-game-client .list-game .container-game .bottom-game-item .process-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(50, 254, 254);
+  animation: slide 2s linear infinite;
+}
+.list-game-client .list-game .container-game .game-info img {
+  max-width: 120px;
+}
+.list-game-client .list-game .container-game .game-info h3 {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes slide {
+  0% {
+    left: -50%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: -50%;
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg); /* Bắt đầu từ góc 0 */
+  }
+  to {
+    transform: rotate(360deg); /* Quay hết một vòng */
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -15,4 +15,12 @@ class WellcomeController extends Controller
     {
         return view('client/home');
     }
+    public function details($id)
+    {
+        return view('client/webdetail');
+    }
+    public function getScore($id)
+    {
+        return view('client/getscoregame');
+    }
 }
