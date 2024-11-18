@@ -176,7 +176,7 @@
                 position: relative;
 
                 img {
-                    width: 80%;
+                    width: 120px;
                     margin-bottom: 20px;
                     margin-left: 20px;
                     animation: spin 1s linear infinite;
@@ -187,7 +187,7 @@
                 position: relative;
 
                 img {
-                    margin-top: -125px;
+                    margin-top: -110px;
                     width: 100%;
                 }
 
@@ -217,7 +217,8 @@
 
             .game-info {
                 img {
-                    max-width: 120px;
+                    width: 100px;
+                    height: 100px;
                 }
 
                 h5 {
