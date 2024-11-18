@@ -40,8 +40,7 @@
 
 .list-web-client {
     height: 100vh;
-
-    padding-top: 5%;
+    padding: 5% 0;
 
     .container-list-web {
         display: flex;
@@ -218,6 +217,7 @@
                 img {
                     max-width: 120px;
                 }
+
                 h5 {
                     max-width: 100%;
                     white-space: nowrap;
@@ -230,6 +230,9 @@
 }
 
 @media (max-width: 576px) {
+    .list-web-client .container-list-web .menu-web {
+        margin-left: 5%;
+    }
     .list-game-client .list-game .container-game .game-item {
         margin-left: -15px;
     }
