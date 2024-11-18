@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
@@ -13,7 +14,6 @@ class userController extends Controller
     {
         // Lấy toàn bộ danh sách user từ bảng users
         $users = User::where('role', 3)->get();
-
 
         // Truyền danh sách user sang view
         return view('admin.user.userList', compact('users'));
@@ -34,6 +34,7 @@ class userController extends Controller
             'phone' => 'required|string|min:10|max:15|unique:users,phone_number', // Validate cho số điện thoại
             'password' => 'required|string|min:6', // Validate cho mật khẩu
             'coin' => 'required|integer|min:0', // Validate cho số lượng xu
+            'telegram' => 'required',
         ], [
             'name.required' => 'Tên người dùng không được để trống.',
             'phone.required' => 'Số điện thoại không được để trống.',
@@ -45,6 +46,7 @@ class userController extends Controller
             'coin.required' => 'Số lượng xu không được để trống.',
             'coin.integer' => 'Số lượng xu phải là một số nguyên.',
             'coin.min' => 'Số lượng xu phải lớn hơn hoặc bằng 0.',
+            'telegram.required' => 'Tetelegram không được để trống.',
         ]);
 
         // Thêm người dùng mới
@@ -54,6 +56,8 @@ class userController extends Controller
             'password' => Hash::make($validatedData['password']),
             'role' => 3,
             'coin' => $validatedData['coin'],
+            'telegram' => $validatedData['telegram'],
+            'parent_id' => Auth::user()->id,
         ]);
 
 
@@ -91,6 +95,7 @@ class userController extends Controller
             'name' => 'required|string|max:255',
             'phone' => 'required|numeric|unique:users,phone_number,' . $id,
             'password' => 'nullable|min:8',  // Không yêu cầu nếu không thay đổi mật khẩu
+            'telegram' => 'required',
         ]);
 
         // Tìm người dùng cần sửa

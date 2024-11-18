@@ -24,6 +24,8 @@ class User extends Authenticatable
         'password',
         'role',
         'coin',
+        'telegram',
+        'parent_id',
     ];
 
     /**

@@ -17,15 +17,19 @@
     " class="list-game">
             <h1>Tên web</h1>
             <ul class="container-game">
+                @if ($games->isEmpty())
+                <h3 style="color: white;">Không game nào trong dữ liệu!</h3>
+                @else
+                @foreach ($games as $game)
                 <a href="">
                     <li class="game-item">
                         <div class="top-game-item">
                             <div class="game-info">
-                                <img src="{{ asset('assets/img/play.png') }}" alt="">
-                                <h3>Tên game nè sấccsacascascsacas</h3>
+                                <img src="{{ asset('storage/' . $game->image) }}" alt="">
+                                <h5>{{$game->title}}</h5>
                             </div>
                             <div class="proportion">
-                                <img src="{{ asset('assets/img/percent_background.png') }}" alt="">
+                                <img src="{{ asset('assets/img/percent_background.png') }}" width="50" alt="">
                             </div>
                         </div>
                         <div class="bottom-game-item">
@@ -35,96 +39,8 @@
                         </div>
                     </li>
                 </a>
-                <a href="">
-                    <li class="game-item">
-                        <div class="top-game-item">
-                            <div class="game-info">
-                                <img src="{{ asset('assets/img/play.png') }}" alt="">
-                                <h3>Tên game nè sấccsacascascsacas</h3>
-                            </div>
-                            <div class="proportion">
-                                <img src="{{ asset('assets/img/percent_background.png') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="bottom-game-item">
-                            <img src="{{ asset('assets/img/slot_item_bg.png') }}" alt="">
-                            <div class="process-bar">
-                            </div>
-                        </div>
-                    </li>
-                </a>
-                <a href="">
-                    <li class="game-item">
-                        <div class="top-game-item">
-                            <div class="game-info">
-                                <img src="{{ asset('assets/img/play.png') }}" alt="">
-                                <h3>Tên game nè sấccsacascascsacas</h3>
-                            </div>
-                            <div class="proportion">
-                                <img src="{{ asset('assets/img/percent_background.png') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="bottom-game-item">
-                            <img src="{{ asset('assets/img/slot_item_bg.png') }}" alt="">
-                            <div class="process-bar">
-                            </div>
-                        </div>
-                    </li>
-                </a>
-                <a href="">
-                    <li class="game-item">
-                        <div class="top-game-item">
-                            <div class="game-info">
-                                <img src="{{ asset('assets/img/play.png') }}" alt="">
-                                <h3>Tên game nè sấccsacascascsacas</h3>
-                            </div>
-                            <div class="proportion">
-                                <img src="{{ asset('assets/img/percent_background.png') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="bottom-game-item">
-                            <img src="{{ asset('assets/img/slot_item_bg.png') }}" alt="">
-                            <div class="process-bar">
-                            </div>
-                        </div>
-                    </li>
-                </a>
-                <a href="">
-                    <li class="game-item">
-                        <div class="top-game-item">
-                            <div class="game-info">
-                                <img src="{{ asset('assets/img/play.png') }}" alt="">
-                                <h3>Tên game nè sấccsacascascsacas</h3>
-                            </div>
-                            <div class="proportion">
-                                <img src="{{ asset('assets/img/percent_background.png') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="bottom-game-item">
-                            <img src="{{ asset('assets/img/slot_item_bg.png') }}" alt="">
-                            <div class="process-bar">
-                            </div>
-                        </div>
-                    </li>
-                </a>
-                <a href="">
-                    <li class="game-item">
-                        <div class="top-game-item">
-                            <div class="game-info">
-                                <img src="{{ asset('assets/img/play.png') }}" alt="">
-                                <h3>Tên game nè sấccsacascascsacas</h3>
-                            </div>
-                            <div class="proportion">
-                                <img src="{{ asset('assets/img/percent_background.png') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="bottom-game-item">
-                            <img src="{{ asset('assets/img/slot_item_bg.png') }}" alt="">
-                            <div class="process-bar">
-                            </div>
-                        </div>
-                    </li>
-                </a>
+                @endforeach
+                @endif
             </ul>
         </ul>
     </div>
