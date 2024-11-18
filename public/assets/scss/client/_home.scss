@@ -40,6 +40,7 @@
 
 .list-web-client {
     height: 100vh;
+
     padding: 5% 0;
 
     .container-list-web {
@@ -160,6 +161,7 @@
                 padding: 10px;
                 border-radius: 5px;
             }
+
             .game-item:hover {
                 box-shadow: 2px 2px 20px white;
             }
@@ -233,6 +235,7 @@
     .list-web-client .container-list-web .menu-web {
         margin-left: 5%;
     }
+
     .list-game-client .list-game .container-game .game-item {
         margin-left: -15px;
     }
