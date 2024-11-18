@@ -16,10 +16,8 @@ class HandleGame extends Component
     public $startTime;
     public $endTime;
 
-
     public $nameGame;
     public $imgGame;
-
 
     public function mount($id)
     {
@@ -39,8 +37,6 @@ class HandleGame extends Component
 
     public function generateRandomPercentage()
     {
-
-
         $dataGame = Game::find($this->id);
 
         $minRatio = $dataGame->min_ratio;
@@ -54,33 +50,24 @@ class HandleGame extends Component
         $min = rand($minRatio, $maxRatio);
         $max = rand($minRatio, $maxRatio);
 
-
         // Đảm bảo min luôn nhỏ hơn max
         if ($min > $max) {
             list($min, $max) = [$max, $min]; // Hoán đổi nếu min lớn hơn max
         }
 
-
         // Tạo chuỗi hiển thị cho round
         $this->roundText = "Round: $min - $max";
 
-        // Sinh ra tỉ lệ ngẫu nhiên sau 10 giây
         $this->percentage = rand($minpercent, $maxpercent);
 
         $this->isLoading = false; // Kết thúc loading
 
-
-
         $currentDate = now();
 
-        // Cộng thêm 5 phút vào thời gian hiện tại để làm thời gian bắt đầu
         $startTime = $currentDate->copy()->addMinutes(5)->format('H:i');
 
-        // Cộng thêm 30 phút vào thời gian bắt đầu để tính thời gian kết thúc
         $endTime = $currentDate->copy()->addMinutes(35)->format('H:i');
 
-
-        // Gán giá trị cho các biến
         $this->startTime = $startTime;
         $this->endTime = $endTime;
 

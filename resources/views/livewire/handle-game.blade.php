@@ -1,9 +1,9 @@
 <div class="core-game"
-    style="background-image: url('{{ asset('assets/img/photo_6183962405080515886_y.jpg') }}'); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+    style="background-image: url('{{ asset('assets/img/bakground6.jpg') }}'); background-position: center center; background-repeat: no-repeat; background-size: cover;">
     <h4 style="text-align: center; color: yellow">{{ $nameGame }}</h4>
 
     <section>
-        <div class="modelViewPort" id="modelViewPort" style="display: none">
+        <div class="modelViewPort" id="modelViewPort">
             <div class="eva">
                 <div class="head">
                     <div class="eyeChamber">
@@ -17,10 +17,11 @@
                     <div class="scannerThing"></div>
                     <div class='scannerOrigin'></div>
                 </div>
+                <div style="display: inline-block; font-size: 13px; color: aqua"> đang phân tích... </div>
             </div>
         </div>
         <div class="loader d-flex justify-content-center align-items-center">
-            <h4 class="text-danger"> {{ $percentage }}%</h4>
+            <h4 class="" style="color: yellow"> {{ $percentage }}%</h4>
             <span style="--i:1;"></span>
             <span style="--i:2;"></span>
             <span style="--i:3;"></span>
@@ -42,17 +43,17 @@
             <span style="--i:19;"></span>
             <span style="--i:20;"></span>
         </div>
-        <img id="imgGame" style="margin-left:10px; " src="{{ asset('storage/' . $imgGame) }}" alt="ảnh" width="100px" height="100px">
 
     </section>
 
-
-
-
     <div id="language-screen">
+        <img id="imgGame" style="margin-left:10 " src="{{ asset('storage/' . $imgGame) }}" alt="ảnh"
+            width="100px" height="100px">
         <div class="d-flex justify-content-center">
-            <button  style="font-size: 13px; padding: 10px;" class=" text-center btn btn-primary">{{ $roundText ?: 'Round: 0 - 0' }}</button>
-            <button  style="font-size: 13px; padding: 14px;" class="btn btn-primary">{{ $startTime ?: '00:00' }} - {{ $endTime ?: '00:00' }}</button>
+            <button style="font-size: 13px; padding: 10px;"
+                class=" text-center btn btn-primary">{{ $roundText ?: 'Round: 0 - 0' }}</button>
+            <button style="font-size: 13px; padding: 14px;" class="btn btn-primary">{{ $startTime ?: '00:00' }} -
+                {{ $endTime ?: '00:00' }}</button>
         </div>
 
 
@@ -66,24 +67,11 @@
         <!-- Nút bấm gọi Livewire action -->
         <button style="font-size: 13px" id="french-button" wire:click="generateRandomPercentage()"
             aria-label="Sélectionner la langue française">Nhận tỉ lệ</button>
+
+
+        <input id="idpercentage" type="text" value="{{ $percentage }}">
+        <input id="id" type="hidden" value="{{ $id }}">
+        <input id="idroundText" type="hidden" value="{{ $roundText }}">
+
     </div>
 </div>
-
-<!-- JavaScript để hiển thị phần tử scan trong 3 giây -->
-<script>
-    document.getElementById('french-button').addEventListener('click', function() {
-        var scanElement = document.getElementById('scan');
-        var modelViewPort = document.getElementById('modelViewPort');
-        var imgGame = document.getElementById('imgGame');
-
-        // Hiển thị phần tử scan
-        scanElement.style.display = 'block';
-        modelViewPort.style.display = 'block';
-        imgGame.style.display = 'none';
-
-        // Ẩn phần tử scan sau 3 giây
-        setTimeout(function() {
-            scanElement.style.display = 'none';
-        }, 3000); // 3000ms = 3 giây
-    })
-</script>
