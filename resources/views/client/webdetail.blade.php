@@ -21,7 +21,7 @@
                 <h3 style="color: white;">Không game nào trong dữ liệu!</h3>
                 @else
                 @foreach ($games as $game)
-                <a href="">
+                <a href="{{route('client.get-score', $game->id)}}">
                     <li class="game-item">
                         <div class="top-game-item">
                             <div class="game-info">
