@@ -6,7 +6,6 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
     ">
     <div class="list-web-client">
         <div style="
@@ -14,90 +13,21 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
     " class="container-list-web">
             <h1>Danh sách web</h1>
             <ul class="menu-web">
+                @if ($lobbys->isEmpty())
+                <h3 style="color: white;">Không có sảnh game nào trong dữ liệu!</h3>
+                @else
+                @foreach ($lobbys as $lobby)
                 <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
+                    <a href="{{route('client.list-game', $lobby->id) }}">
+                        <img src="{{ asset('storage/' . $lobby->image) }}" alt="">
+                        <p>{{$lobby->name}}</p>
                     </a>
                 </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="item-web-client">
-                    <a href="">
-                        <img src="{{ asset('assets/img/play.png') }}" alt="">
-                    </a>
-                </div>
+                @endforeach
+                @endif
             </ul>
         </div>
     </div>

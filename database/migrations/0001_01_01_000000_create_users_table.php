@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('password');
             $table->integer('role');
             $table->integer('coin');
+            $table->string('telegram');
+            $table->integer('parent_id')->nullable();
             $table->timestamps();
         });
 

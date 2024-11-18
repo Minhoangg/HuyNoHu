@@ -23,6 +23,8 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password123'),
                 'role' => 1, // 1: Superadmin
                 'coin' => 100, // 1: Superadmin
+                'telegram' => '@telegam123',
+                'parent_id' => null,
             ],
             [
                 'name' => 'Admin',
@@ -30,6 +32,8 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password123'),
                 'role' => 1, // 1: Superadmin
                 'coin' => 100, // 2: Admin
+                'telegram' => '@telegam123admin1',
+                'parent_id' => null,
             ],
             [
                 'name' => 'Regular User',
@@ -37,6 +41,26 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password123'),
                 'role' => 1, // 1: Superadmin
                 'coin' => 100, // 3: User
+                'telegram' => '@telegam13admin1',
+                'parent_id' => null,
+            ],
+            [
+                'name' => 'Nguyen Văn A',
+                'phone_number' => 555666777,
+                'password' => Hash::make('password123'),
+                'role' => 1, // 1: Superadmin
+                'coin' => 100, // 3: User
+                'telegram' => '@telegam143admin1',
+                'parent_id' => null,
+            ],
+            [
+                'name' => 'Phan Mạnh Em',
+                'phone_number' => 555666777,
+                'password' => Hash::make('password123'),
+                'role' => 1, // 1: Superadmin
+                'coin' => 100, // 3: User
+                'telegram' => '@telegam3admin1',
+                'parent_id' => null,
             ],
         ];
 

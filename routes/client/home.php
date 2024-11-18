@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\client\WellcomeController;
 
-Route::get('/', [WellcomeController::class, 'index']);
-Route::get('/home', [WellcomeController::class, 'home']);
-Route::get('/list-game/{id}', [WellcomeController::class, 'details']);
-Route::get('get-score/{id}', [WellcomeController::class, 'getScore']);
+Route::prefix('/')->group(function () {
+    Route::get('/', [WellcomeController::class, 'index'])->name('home');
+    Route::get('/lobby', [WellcomeController::class, 'home'])->name('home-lobby');
+    Route::get('/list-game/{id}', [WellcomeController::class, 'details'])->name('list-game');
+});

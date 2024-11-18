@@ -134,7 +134,7 @@
 
 .list-web-client {
   height: 100vh;
-  padding-top: 5%;
+  padding: 5% 0;
 }
 .list-web-client .container-list-web {
   display: flex;
@@ -160,7 +160,6 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-left: -20px;
   padding: 0;
   gap: 20px;
   width: 90%;
@@ -174,8 +173,22 @@
   -ms-overflow-style: none;
   /* Ẩn thanh cuộn trên Internet Explorer */
 }
+.list-web-client .container-list-web .menu-web .item-web-client {
+  border: 2px solid rgb(255, 255, 255);
+  padding: 5px;
+  border-radius: 5px;
+  height: 100px;
+}
 .list-web-client .container-list-web .menu-web .item-web-client img {
   width: 100px;
+}
+.list-web-client .container-list-web .menu-web .item-web-client a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+.list-web-client .container-list-web .menu-web .item-web-client:hover {
+  box-shadow: 2px 2px 20px white;
 }
 .list-web-client .container-list-web .container-show-list-web::-webkit-scrollbar {
   display: none;
@@ -207,7 +220,7 @@
   flex-wrap: wrap;
   gap: 20px;
   width: 100%;
-  margin-left: -20px;
+  margin-left: -35px;
   justify-content: center;
   max-height: 300px;
   overflow-y: auto;
@@ -226,21 +239,25 @@
 .list-game-client .list-game .container-game .game-item {
   max-width: 300px;
   margin-left: 30px;
+  border: 2px solid rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 5px;
+}
+.list-game-client .list-game .container-game .game-item:hover {
+  box-shadow: 2px 2px 20px white;
 }
 .list-game-client .list-game .container-game .top-game-item {
   display: flex;
+  height: 125px;
+  align-items: center;
 }
 .list-game-client .list-game .container-game .proportion {
   position: relative;
 }
-.list-game-client .list-game .container-game .proportion p {
-  position: absolute;
-  top: 40%;
-  margin-left: 36%;
-  font-size: 20px;
-  font-weight: 900;
-}
 .list-game-client .list-game .container-game .proportion img {
+  width: 80%;
+  margin-bottom: 20px;
+  margin-left: 20px;
   animation: spin 1s linear infinite;
 }
 .list-game-client .list-game .container-game .bottom-game-item {
@@ -248,7 +265,7 @@
 }
 .list-game-client .list-game .container-game .bottom-game-item img {
   margin-top: -125px;
-  width: 307px;
+  width: 100%;
 }
 .list-game-client .list-game .container-game .bottom-game-item .process-bar {
   position: absolute;
@@ -274,7 +291,7 @@
 .list-game-client .list-game .container-game .game-info img {
   max-width: 120px;
 }
-.list-game-client .list-game .container-game .game-info h3 {
+.list-game-client .list-game .container-game .game-info h5 {
   max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -282,11 +299,8 @@
 }
 
 @media (max-width: 576px) {
-  .list-web-client .container-list-web .menu-web {
-    margin-left: 5%;
-  }
   .list-game-client .list-game .container-game .game-item {
-    margin-left: -1px;
+    margin-left: -15px;
   }
   .list-game-client .list-game .container-game {
     margin-left: 0;

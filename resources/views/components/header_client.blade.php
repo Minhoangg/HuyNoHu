@@ -12,13 +12,14 @@
             <span class="bg-light  navbar-toggler-icon rounded-2"></span>
         </button>
         <!-- Navbar Links -->
+        @if(!empty(session('user')))
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active text-light" aria-current="page" href="#">Tên người dùng</a>
+                    <a class="nav-link active text-light" aria-current="page" href="#">{{session('user.name')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Xu: 999</a>
+                    <a class="nav-link text-light" href="#">Xu: {{session('user.coin')}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-light" href="#">Nạp Xu</a>
@@ -27,9 +28,18 @@
                     <a class="nav-link text-light" href="#">Hỗ trợ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Đăng xuất</a>
+                    <a class="nav-link text-light" href="{{ route('client.logout') }}">Đăng xuất</a>
                 </li>
             </ul>
         </div>
+        @else
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Hỗ trợ</a>
+                </li>
+            </ul>
+        </div>
+        @endif
     </div>
 </nav>

@@ -58,26 +58,37 @@ border: 1px solid rgba(0, 0, 0, .2);
 border-radius: .3rem;
 outline: 0;
 ">
+            @if(session('user'))
+            <script>
+                window.location.href = "{{ route('client.home-lobby') }}";
+            </script>
+            @endif
+
             <div id="login_wrap" class="container-fluid">
                 <div class="login_box">
-                    <form action="">
+                    <form action="{{ route('client.login-submit') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <i class="fa-solid fa-user"></i>
-                            <input type="text" class="form-control" id="username" name="username"
-                                placeholder="Tên đăng nhập">
+                            <input type="text" class="form-control" id="username" name="name" placeholder="Tên đăng nhập" value="{{ old('username') }}">
+                            @if ($errors->has('name'))
+                            <small class="text-danger">{{ $errors->first('name') }}</small>
+                            @endif
                         </div>
                         <div class="mb-3">
                             <i class="fa-solid fa-unlock"></i>
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Mật khẩu">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu">
+                            @if ($errors->has('password'))
+                            <small class="text-danger">{{ $errors->first('password') }}</small>
+                            @endif
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            Đăng nhập
-                        </button>
-                        <p class="q-register" style="color: white"> Chưa có tài khoản? <span class="link-register-model"
-                                style="
-                            color: #00ff75">Đăng ký</span></p>
+                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
                     </form>
+                    @if (session('error'))
+                    <div class="alert alert-danger mt-3">
+                        {{ session('error') }}
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
