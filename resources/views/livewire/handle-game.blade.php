@@ -1,9 +1,8 @@
 <div class="core-game"
     style="background-image: url('{{ asset('assets/img/photo_6183962405080515886_y.jpg') }}'); background-position: center center; background-repeat: no-repeat; background-size: cover;">
-    <h1 style="text-align: center; color: yellow">Game nổ hủ</h1>
+    <h4 style="text-align: center; color: yellow">{{ $nameGame }}</h4>
 
     <section>
-
         <div class="modelViewPort" id="modelViewPort" style="display: none">
             <div class="eva">
                 <div class="head">
@@ -21,7 +20,7 @@
             </div>
         </div>
         <div class="loader d-flex justify-content-center align-items-center">
-            <h2 class="text-danger"> {{ $percentage }}%</h2>
+            <h4 class="text-danger"> {{ $percentage }}%</h4>
             <span style="--i:1;"></span>
             <span style="--i:2;"></span>
             <span style="--i:3;"></span>
@@ -43,15 +42,17 @@
             <span style="--i:19;"></span>
             <span style="--i:20;"></span>
         </div>
+        <img id="imgGame" style="margin-left:10px; " src="{{ asset('storage/' . $imgGame) }}" alt="ảnh" width="100px" height="100px">
+
     </section>
 
 
 
 
     <div id="language-screen">
-        <div class="">
-            <button class=" text-center btn btn-primary">{{ $roundText ?: 'Round: 0 - 0' }}</button>
-            <button class="btn btn-primary">{{ $startTime ?: '00:00' }} - {{ $endTime ?: '00:00' }}</button>
+        <div class="d-flex justify-content-center">
+            <button  style="font-size: 13px; padding: 10px;" class=" text-center btn btn-primary">{{ $roundText ?: 'Round: 0 - 0' }}</button>
+            <button  style="font-size: 13px; padding: 14px;" class="btn btn-primary">{{ $startTime ?: '00:00' }} - {{ $endTime ?: '00:00' }}</button>
         </div>
 
 
@@ -63,7 +64,7 @@
 
 
         <!-- Nút bấm gọi Livewire action -->
-        <button id="french-button" wire:click="generateRandomPercentage(50, 100)"
+        <button style="font-size: 13px" id="french-button" wire:click="generateRandomPercentage()"
             aria-label="Sélectionner la langue française">Nhận tỉ lệ</button>
     </div>
 </div>
@@ -73,10 +74,12 @@
     document.getElementById('french-button').addEventListener('click', function() {
         var scanElement = document.getElementById('scan');
         var modelViewPort = document.getElementById('modelViewPort');
+        var imgGame = document.getElementById('imgGame');
 
         // Hiển thị phần tử scan
         scanElement.style.display = 'block';
         modelViewPort.style.display = 'block';
+        imgGame.style.display = 'none';
 
         // Ẩn phần tử scan sau 3 giây
         setTimeout(function() {

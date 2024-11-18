@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire;
 
 use Livewire\Component;
@@ -12,6 +13,26 @@ class HandleGame extends Component
     public $startTime;
     public $endTime;
     public $isLoading = false; // Trạng thái loading
+
+    public $nameGame;
+    public $imgGame;
+
+
+    public function mount($id)
+    {
+        $this->id = $id; // Ensure the ID is passed correctly when rendering the component
+
+        $dataGame = Game::find($this->id);
+
+        if ($dataGame) {
+            $this->nameGame = $dataGame->title;
+            $this->imgGame = $dataGame->image;
+        } else {
+            // Handle the case where no game is found
+            $this->nameGame = 'Game Not Found';
+            $this->imgGame = 'default-image.jpg'; // Or any fallback image
+        }
+    }
 
     public function generateRandomPercentage()
     {
