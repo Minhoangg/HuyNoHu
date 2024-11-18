@@ -11,7 +11,7 @@
     ">
         <div class="core-game-client">
 
-            @livewire('handle-game', ['id' => $GameId]);
+            @livewire('handle-game', ['id' => $GameId])
 
         </div>
     </section>

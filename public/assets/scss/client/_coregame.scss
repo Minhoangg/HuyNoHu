@@ -2,199 +2,402 @@
   height: 100vh;
   padding-top: 5%;
 
-    .core-game {
-      flex-wrap: wrap;
-      width: 60%;
-      border-radius: 10px;
-      border: 4px solid white;
-      height: 100%;
-      /* Nếu cần giới hạn chiều cao, đặt giá trị cụ thể, ví dụ: 400px */
-      max-height: 620px;
-      /* Đặt chiều cao tối đa */
-      margin: 0 auto;
-      background-color: rgba($color: #0f9b0f, $alpha: 0.2);
+  .core-game {
+    flex-wrap: wrap;
+    width: 60%;
+    border-radius: 10px;
+    border: 4px solid white;
+    height: 100%;
+    /* Nếu cần giới hạn chiều cao, đặt giá trị cụ thể, ví dụ: 400px */
+    max-height: 620px;
+    /* Đặt chiều cao tối đa */
+    margin: 0 auto;
+    background-color: rgba($color: #0f9b0f, $alpha: 0.2);
 
-        @keyframes animateBg {
-            0% {
-              filter: hue-rotate(0deg);
-            }
-            100% {
-              filter: hue-rotate(360deg);
-            }
+    @keyframes animateBg {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+
+      100% {
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    section {
+      display: flex;
+      justify-content: center;
+    
+      .loader {
+        position: relative;
+        width: 100px; /* Reduced size */
+        height: 100px; /* Reduced size */
+    
+        &:hover {
+          position: relative;
+          width: 120px; /* Reduced hover size */
+          height: 120px; /* Reduced hover size */
+        }
+    
+        span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          transform: rotate(calc(18deg * var(--i)));
+    
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px; /* Reduced size */
+            height: 12px; /* Reduced size */
+            background: #00ff0a;
+            border-radius: 50%;
+            box-shadow:
+              0 0 8px #00ff0a,
+              0 0 16px #00ff0a,
+              0 0 24px #00ff0a,
+              0 0 32px #00ff0a,
+              0 0 40px #00ff0a,
+              0 0 50px #00ff0a;
+            animation: scaleAnimate 2s linear infinite;
+            animation-delay: calc(0.1s * var(--i));
           }
+        }
+      }
+    }
+    
 
-        section {
-            display: flex;
-            justify-content: center;
-            .loader {
-                position: relative;
-                width: 120px;
-                height: 120px;
+    @keyframes scaleAnimate {
+      0% {
+        transform: scale(1);
+      }
 
-                &:hover {
-                    position: relative;
-                    width: 140px;
-                    height: 140px;
-                }
+      80%,
+      100% {
+        transform: scale(0);
+      }
+    }
 
-                span {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    transform: rotate(calc(18deg * var(--i)));
+    #language-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      border-radius: 10px;
 
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        width: 15px;
-                        height: 15px;
-                        background: #00ff0a;
-                        border-radius: 50%;
-                        box-shadow:
-                            0 0 10px #00ff0a,
-                            0 0 20px #00ff0a,
-                            0 0 40px #00ff0a,
-                            0 0 60px #00ff0a,
-                            0 0 80px #00ff0a,
-                            0 0 100px #00ff0a;
-                        animation: scaleAnimate 2s linear infinite;
-                        animation-delay: calc(0.1s * var(--i));
-                    }
-                }
-            }
+      button {
+        font-family: "Press Start 2P", cursive;
+        font-size: 1.2em;
+        margin: 10px;
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #000;
+        color: #00ff00;
+        border: 2px solid #00ff00;
+        outline: none;
+        transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+
+        &:hover,
+        &:focus {
+          background-color: #00ff00;
+          color: #000;
+          transform: scale(1.1);
+          box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+        }
+      }
+    }
+
+
+    #scan {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .fingerprint {
+        position: relative;
+        width: 80px;
+        /* Giảm kích thước hơn nữa */
+        height: 100px;
+        /* Giảm kích thước hơn nữa */
+        background: url(https://img.playbook.com/IqiomQg4exY5aWlDS3672EcidSBHXX-Ei4HGylg9i0k/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzI4OTJhZjg1/LTMzMTItNGI1OC05/YjVkLTBhNGYxMzU0/YWE0Mg);
+        background-size: 80px;
+        /* Tương ứng với kích thước mới */
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: url(https://img.playbook.com/L3RYf73i1Fwu5y4HqiqQDLvhDOFbUINDLe3PSUvQNUA/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzk0MmIzOGFl/LWFmZmYtNGQ1OS1h/NGFjLTM3YTk4N2Rj/Y2Y0YQ);
+          background-size: 80px;
+          /* Điều chỉnh theo kích thước mới */
+          animation: animate 4s ease-in-out infinite;
         }
 
-        @keyframes scaleAnimate {
-            0% {
-              transform: scale(1);
-            }
-          
-            80%,
-            100% {
-              transform: scale(0);
-            }
-          }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          /* Giảm chiều cao hơn nữa */
+          background: #3fefef;
+          border-radius: 2px;
+          /* Điều chỉnh phù hợp */
+          filter: drop-shadow(0 0 5px #3fefef) drop-shadow(0 0 15px #3fefef);
+          animation: animate_line 4s ease-in-out infinite;
+        }
+      }
 
-        #language-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
-            border-radius: 10px;          
-            button {
-              font-family: "Press Start 2P", cursive;
-              font-size: 1.2em;
-              margin: 10px;
-              padding: 10px 20px;
-              cursor: pointer;
-              background-color: #000;
-              color: #00ff00;
-              border: 2px solid #00ff00;
-              outline: none;
-              transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
-              box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-          
-              &:hover,
-              &:focus {
-                background-color: #00ff00;
-                color: #000;
-                transform: scale(1.1);
-                box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
-              }
-            }
-          }
-          
-
-          #scan {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          
-            .fingerprint {
-              position: relative;
-              width: 80px; /* Giảm kích thước hơn nữa */
-              height: 100px; /* Giảm kích thước hơn nữa */
-              background: url(https://img.playbook.com/IqiomQg4exY5aWlDS3672EcidSBHXX-Ei4HGylg9i0k/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzI4OTJhZjg1/LTMzMTItNGI1OC05/YjVkLTBhNGYxMzU0/YWE0Mg);
-              background-size: 80px; /* Tương ứng với kích thước mới */
-          
-              &::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: url(https://img.playbook.com/L3RYf73i1Fwu5y4HqiqQDLvhDOFbUINDLe3PSUvQNUA/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzk0MmIzOGFl/LWFmZmYtNGQ1OS1h/NGFjLTM3YTk4N2Rj/Y2Y0YQ);
-                background-size: 80px; /* Điều chỉnh theo kích thước mới */
-                animation: animate 4s ease-in-out infinite;
-              }
-          
-              &::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 2px; /* Giảm chiều cao hơn nữa */
-                background: #3fefef;
-                border-radius: 2px; /* Điều chỉnh phù hợp */
-                filter: drop-shadow(0 0 5px #3fefef) drop-shadow(0 0 15px #3fefef);
-                animation: animate_line 4s ease-in-out infinite;
-              }
-            }
-          
-            h3 {
-              text-transform: uppercase;
-              font-size: 0.8em; /* Kích thước chữ nhỏ hơn */
-              letter-spacing: 0.8px; /* Thu hẹp khoảng cách chữ */
-              margin-top: 5px; /* Giảm khoảng cách trên */
-              color: #3fefef;
-              filter: drop-shadow(0 0 5px #3fefef) drop-shadow(0 0 15px #3fefef);
-              animation: animate_text 0.5s steps(1) infinite;
-            }
-          }
-          
-          
-          
-          
-          @keyframes animate {
-            0%,
-            100% {
-              height: 0%;
-            }
-            50% {
-              height: 100%;
-            }
-          }
-          
-          @keyframes animate_line {
-            0%,
-            100% {
-              top: 0%;
-            }
-            50% {
-              top: 100%;
-            }
-          }
-          
-          @keyframes animate_text {
-            0%,
-            100% {
-              opacity: 0;
-            }
-            50% {
-              opacity: 1;
-            }
-          }
-          
-
-
-
+      h3 {
+        text-transform: uppercase;
+        font-size: 0.8em;
+        /* Kích thước chữ nhỏ hơn */
+        letter-spacing: 0.8px;
+        /* Thu hẹp khoảng cách chữ */
+        margin-top: 5px;
+        /* Giảm khoảng cách trên */
+        color: #3fefef;
+        filter: drop-shadow(0 0 5px #3fefef) drop-shadow(0 0 15px #3fefef);
+        animation: animate_text 0.5s steps(1) infinite;
+      }
     }
+
+
+
+
+    @keyframes animate {
+
+      0%,
+      100% {
+        height: 0%;
+      }
+
+      50% {
+        height: 100%;
+      }
+    }
+
+    @keyframes animate_line {
+
+      0%,
+      100% {
+        top: 0%;
+      }
+
+      50% {
+        top: 100%;
+      }
+    }
+
+    @keyframes animate_text {
+
+      0%,
+      100% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+
+    :root {
+      --EVA-ROTATION-DURATION: 4s;
+    }
+    
+    .modelViewPort {
+      perspective: 600px; /* Keeps perspective at a moderate value */
+      width: 7rem; /* Increased size */
+      aspect-ratio: 1;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+    
+    .eva {
+      transform-style: preserve-3d;
+      animation: rotateRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+    }
+    
+    .head {
+      position: relative;
+      width: 2rem; /* Increased width */
+      height: 1.3rem; /* Increased height */
+      border-radius: 48% 53% 45% 55% / 79% 79% 20% 22%;
+      background: linear-gradient(to right, white 45%, gray);
+    }
+    
+    .eyeChamber {
+      width: 2rem; /* Increased width */
+      height: 1.125rem; /* Increased height */
+      position: relative;
+      left: 50%;
+      top: 55%;
+      border-radius: 45% 53% 45% 48% / 62% 59% 35% 34%;
+      background-color: #0C203C;
+      box-shadow: 0px 0px 1px 1px white, inset 0px 0px 0px 1px black;
+      transform: translate(-50%, -50%);
+      animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+    }
+    
+    .eye {
+      width: 0.375rem; /* Slightly increased eye width */
+      height: 0.5rem; /* Slightly increased eye height */
+      position: absolute;
+      border-radius: 50%;
+    }
+    
+    .eye:first-child {
+      left: 5px;
+      top: 50%;
+      background: repeating-linear-gradient(
+        65deg,
+        #9bdaeb 0px,
+        #9bdaeb 1px,
+        white 2px
+      );
+      box-shadow: inset 0px 0px 3px #04B8D5, 0px 0px 10px 1px #0bdaeb;
+      transform: translate(0, -50%) rotate(-65deg);
+    }
+    
+    .eye:nth-child(2) {
+      right: 5px;
+      top: 50%;
+      background: repeating-linear-gradient(
+        -65deg,
+        #9bdaeb 0px,
+        #9bdaeb 1px,
+        white 2px
+      );
+      box-shadow: inset 0px 0px 3px #04B8D5, 0px 0px 10px 1px #0bdaeb;
+      transform: translate(0, -50%) rotate(65deg);
+    }
+    
+    .body {
+      width: 2rem; /* Increased body width */
+      height: 2.75rem; /* Increased body height */
+      position: relative;
+      margin-block-start: 0.125rem;
+      border-radius: 47% 53% 45% 55% / 12% 9% 90% 88%;
+      background: linear-gradient(to right, white 35%, gray);
+    }
+    
+    .hand {
+      position: absolute;
+      left: -0.5rem; /* Slightly increased hand position */
+      top: 0.5rem; /* Slightly increased hand position */
+      width: 0.75rem; /* Increased hand width */
+      height: 1.875rem; /* Increased hand height */
+      border-radius: 40%;
+      background: linear-gradient(to left, white 15%, gray);
+      box-shadow: 3px 0px 3px rgba(0, 0, 0, 0.25);
+      transform: rotateY(55deg) rotateZ(10deg);
+    }
+    
+    .hand:first-child {
+      animation: compensateRotation var(--EVA-ROTATION-DURATION) linear infinite alternate;
+    }
+    
+    .hand:nth-child(2) {
+      left: 92%;
+      background: linear-gradient(to right, white 15%, gray);
+      transform: rotateY(55deg) rotateZ(-10deg);
+      animation: compensateRotationRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+    }
+    
+    .scannerThing {
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 60%;
+      top: 10%;
+      border-top: 55px solid #9bdaeb; /* Increased size of scanner */
+      border-left: 70px solid transparent;
+      border-right: 70px solid transparent;
+      transform-origin: top left;
+      mask: linear-gradient(to right, white, transparent 35%);
+      animation: glow 2s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+    }
+    
+    .scannerOrigin {
+      position: absolute;
+      width: 2px; /* Increased size */
+      aspect-ratio: 1;
+      border-radius: 50%;
+      left: 60%;
+      top: 10%;
+      background: #9bdaeb;
+      box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+      animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite;
+    }
+    
+    @keyframes rotateRight {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(25deg);
+      }
+    }
+    
+    @keyframes moveRight {
+      from {
+        transform: translate(-50%, -50%);
+      }
+      to {
+        transform: translate(-40%, -50%);
+      }
+    }
+    
+    @keyframes compensateRotation {
+      from {
+        transform: rotateY(55deg) rotateZ(10deg);
+      }
+      to {
+        transform: rotateY(30deg) rotateZ(10deg);
+      }
+    }
+    
+    @keyframes compensateRotationRight {
+      from {
+        transform: rotateY(55deg) rotateZ(-10deg);
+      }
+      to {
+        transform: rotateY(70deg) rotateZ(-10deg);
+      }
+    }
+    
+    @keyframes glow {
+      from {
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      45% {
+        transform: rotate(-25deg);
+      }
+      75% {
+        transform: rotate(5deg);
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    
+
+  }
 }
