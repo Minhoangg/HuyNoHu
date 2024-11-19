@@ -2,7 +2,7 @@
 
 @section('content')
 <section style="
-        background-image: url('{{ asset('assets/img/backgouund2.jpg') }}');
+        background-image: url('{{ asset('assets/img/1527c243-151a-4266-b9ed-949b8f091476.jpg') }}');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
