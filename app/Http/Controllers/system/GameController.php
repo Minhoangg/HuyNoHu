@@ -61,7 +61,7 @@ class GameController extends Controller
             'max_ratio.integer' => 'Max Ratio phải là một số nguyên.',
             'max_ratio.min' => 'Max Ratio phải lớn hơn hoặc bằng 0.',
         ]);
-        
+
 
         // Handle image upload
         if ($request->hasFile('image')) {
@@ -104,11 +104,11 @@ class GameController extends Controller
         // Fetch the game details based on the provided ID
         $game = Game::findOrFail($id);
         $lobbies = Lobby::all();  // Assuming you have a Lobby model and need to fetch all lobbies
-        
+
         // Return the edit view with game data
         return view('admin.game.gameEdit', compact('game', 'lobbies'));
     }
-    
+
 
     public function editHandle(Request $request, $id)
     {
@@ -141,21 +141,21 @@ class GameController extends Controller
             'max_ratio.integer' => 'Max Ratio phải là một số nguyên.',
             'max_ratio.min' => 'Max Ratio phải lớn hơn hoặc bằng 0.',
         ]);
-        
-    
+
+
         // Find the game
         $game = Game::findOrFail($id);
-    
+
         // Handle image upload if new image is provided
         if ($request->hasFile('image')) {
             // Delete old image if it exists
             if ($game->image) {
                 Storage::disk('public')->delete($game->image);
             }
-    
+
             $imagePath = $request->file('image')->store('images/games', 'public');
         }
-    
+
         // Update the game data
         $game->update([
             'lobby_id' => $request->lobby_id,
@@ -166,10 +166,10 @@ class GameController extends Controller
             'min_ratio' => $request->min_ratio,
             'max_ratio' => $request->max_ratio,
         ]);
-    
+
         return redirect()->route('system.game-getall')->with('success', 'Game updated successfully');
     }
-    
+
 
 
     public function addCoin(Request $request, $id)

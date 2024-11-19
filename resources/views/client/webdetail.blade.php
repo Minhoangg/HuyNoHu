@@ -6,7 +6,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 120vh;
     ">
     <div class="list-game-client">
         <ul style="
@@ -15,7 +15,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     " class="list-game">
-            <h1>Tên web</h1>
+            <h1 style="margin: 10px 0;color: rgb(255, 109, 4);">{{$lobby->name}}</h1>
             <ul class="container-game">
                 @if ($games->isEmpty())
                 <h3 style="color: white;">Không game nào trong dữ liệu!</h3>

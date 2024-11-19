@@ -4,56 +4,45 @@
     align-items: center;
     padding: 0 20px;
     border-bottom: 4px solid rgb(255, 109, 4);
-
     .header_client_logo {
         h1 {
             font-weight: 900;
             color: rgb(255, 109, 4);
             text-shadow: 1px 1px 50px #fffc4f;
         }
-
         p {
             color: #fffc4f;
             margin-top: -10px;
         }
     }
-
     background: #000000;
-
     .menu_header_client {
         display: flex;
         padding: 10px 20px;
         font-size: 16px;
         list-style: none;
         margin: 0;
-
         a {
             text-decoration: none;
             color: white;
         }
-
         .menu-item-client {
             padding: 10px;
         }
     }
 }
-
 .list-web-client {
     height: 100vh;
-
     padding: 5% 0;
-
     .container-list-web {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        width: 60%;
+        width: 80%;
         border-radius: 10px;
-        border: 4px solid white;
-        height: 100%;
-        /* Nếu cần giới hạn chiều cao, đặt giá trị cụ thể, ví dụ: 400px */
-        max-height: 500px;
-        /* Đặt chiều cao tối đa */
+        border: 4px solid rgb(255, 104, 22);
+        height: 100%; /* Nếu cần giới hạn chiều cao, đặt giá trị cụ thể, ví dụ: 400px */
+        max-height: 500px; /* Đặt chiều cao tối đa */
         margin: 0 auto;
         background-color: rgba($color: #0f9b0f, $alpha: 0.2);
 
@@ -62,7 +51,6 @@
             color: white;
             font-weight: 700;
         }
-
         .menu-web {
             display: flex;
             align-items: center;
@@ -72,23 +60,19 @@
             gap: 20px;
             width: 90%;
             height: 70%;
-            overflow-y: auto;
-            /* Kích hoạt cuộn dọc */
-            overflow-x: hidden;
-            /* Ẩn cuộn ngang */
+            overflow-y: auto; /* Kích hoạt cuộn dọc */
+            overflow-x: hidden; /* Ẩn cuộn ngang */
 
-            scrollbar-width: none;
-            /* Ẩn thanh cuộn trên Firefox */
-            -ms-overflow-style: none;
-
-            /* Ẩn thanh cuộn trên Internet Explorer */
+            scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+            -ms-overflow-style: none; /* Ẩn thanh cuộn trên Internet Explorer */
             .item-web-client {
-                border: 2px solid rgb(255, 255, 255);
+                border: 2px solid rgb(255, 104, 22);
                 padding: 5px;
                 border-radius: 5px;
                 height: 100px;
                 img {
-                    width: 100px;
+                    width: 60px;
+                    height: 60px;
                 }
                 a {
                     text-decoration: none;
@@ -102,27 +86,22 @@
         }
 
         .container-show-list-web::-webkit-scrollbar {
-            display: none;
-            /* Ẩn thanh cuộn trên Chrome/Safari */
+            display: none; /* Ẩn thanh cuộn trên Chrome/Safari */
         }
     }
 }
-
 .list-game-client {
     min-height: 100vhpx;
     width: 80%;
     margin: 0 auto;
     padding: 5% 0;
-
     .list-game {
-        min-height: 400px;
-
+        min-height: 500px;
         h1 {
             text-align: center;
             color: white;
             font-weight: 700;
         }
-
         border-radius: 10px;
         border: 4px solid rgb(255, 104, 22);
 
@@ -130,13 +109,13 @@
             width: 150px;
             object-fit: cover;
         }
-
         .container-game {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             width: 100%;
             margin-left: -35px;
+            padding-left: 0;
             justify-content: center;
             max-height: 300px;
             overflow-y: auto;
@@ -144,7 +123,6 @@
             list-style: none;
             scrollbar-width: none;
             -ms-overflow-style: none;
-
             .game-info {
                 width: 50%;
             }
@@ -153,28 +131,23 @@
                 text-decoration: none;
                 color: white;
             }
-
             .game-item {
                 max-width: 300px;
                 margin-left: 30px;
-                border: 2px solid rgb(255, 255, 255);
+                border: 2px solid rgb(255, 104, 22);
                 padding: 10px;
                 border-radius: 5px;
             }
-
             .game-item:hover {
                 box-shadow: 2px 2px 20px white;
             }
-
             .top-game-item {
                 display: flex;
                 height: 125px;
                 align-items: center;
             }
-
             .proportion {
                 position: relative;
-
                 img {
                     width: 120px;
                     margin-bottom: 20px;
@@ -182,15 +155,12 @@
                     animation: spin 1s linear infinite;
                 }
             }
-
             .bottom-game-item {
                 position: relative;
-
                 img {
                     margin-top: -110px;
                     width: 100%;
                 }
-
                 .process-bar {
                     position: absolute;
                     top: 45%;
@@ -202,7 +172,6 @@
                     overflow: hidden;
                     border-radius: 15px;
                 }
-
                 .process-bar::before {
                     content: "";
                     position: absolute;
@@ -214,13 +183,11 @@
                     animation: slide 2s linear infinite;
                 }
             }
-
             .game-info {
                 img {
                     width: 100px;
                     height: 100px;
                 }
-
                 h5 {
                     max-width: 100%;
                     white-space: nowrap;
@@ -231,20 +198,35 @@
         }
     }
 }
-
 @media (max-width: 576px) {
-    .list-web-client .container-list-web .menu-web {
-        margin-left: 5%;
-    }
-
     .list-game-client .list-game .container-game .game-item {
-        margin-left: -15px;
+        max-width: 200px;
+        margin-left: 15px;
     }
-
+    .container-game h3 {
+        font-size: 15px;
+    }
+    .list-game-client .list-game .container-game .game-item .game-info {
+        img {
+            width: 70px;
+            height: 70px;
+        }
+    }
+    .list-game-client
+        .list-game
+        .container-game
+        .bottom-game-item
+        .process-bar {
+        top: -23%;
+    }
+    .list-game-client .list-game .container-game .game-item .proportion {
+        img {
+            width: 80px;
+        }
+    }
     .list-game-client .list-game .container-game {
-        margin-left: 0;
+        margin-left: -8px;
     }
-
     .list-game-client .list-game {
         padding: 0;
     }
@@ -254,11 +236,9 @@
     0% {
         left: -50%;
     }
-
     50% {
         left: 100%;
     }
-
     100% {
         left: -50%;
     }
@@ -266,12 +246,9 @@
 
 @keyframes spin {
     from {
-        transform: rotate(0deg);
-        /* Bắt đầu từ góc 0 */
+        transform: rotate(0deg); /* Bắt đầu từ góc 0 */
     }
-
     to {
-        transform: rotate(360deg);
-        /* Quay hết một vòng */
+        transform: rotate(360deg); /* Quay hết một vòng */
     }
 }

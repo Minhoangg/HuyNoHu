@@ -28,8 +28,9 @@ class WellcomeController extends Controller
 
     public function details($id)
     {
+        $lobby = Lobby::find($id);
         $games = Game::where('lobby_id', $id)->get(); // Sử dụng get() thay vì getAll()
-        return view('client/webdetail', ['games' => $games]);
+        return view('client/webdetail', ['games' => $games, 'lobby' => $lobby]);
     }
 
     public function getScore($id)

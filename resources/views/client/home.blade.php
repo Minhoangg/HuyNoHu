@@ -14,7 +14,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     " class="container-list-web">
-            <h1>Danh sách web</h1>
+            <h1 style="overflow: hidden; color: rgb(255, 109, 4);">NETSLOT</h1>
             <ul class="menu-web">
                 @if ($lobbys->isEmpty())
                 <h3 style="color: white;">Không có sảnh game nào trong dữ liệu!</h3>
