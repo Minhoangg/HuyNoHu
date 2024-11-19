@@ -52,6 +52,15 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label for="telegram">Telegram</label>
+                                            <input type="number" name="telegram" class="form-control" id="telegram" placeholder="Nhập telegram" />
+                                            @error('telegram')
+                                                <small class="form-text text-muted text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-action">

@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <form action="{{ route('system.user-update', $user->id) }}" method="POST">
+                        <form action="{{ route('system.adminAccount-update', $user->id) }}" method="POST">
                             @csrf
                             <div class="card-header">
                                 <div class="card-title">Chỉnh sửa người dùng</div>
@@ -19,7 +19,8 @@
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="name">Tên người dùng</label>
-                                            <input type="text" name="name" class="form-control" id="name" value="{{ old('name', $user->name) }}" placeholder="Nhập tên người dùng" />
+                                            <input type="text" name="name" class="form-control" id="name"
+                                                value="{{ old('name', $user->name) }}" placeholder="Nhập tên người dùng" />
                                             @error('name')
                                                 <small class="form-text text-muted text-danger">{{ $message }}</small>
                                             @enderror
@@ -28,7 +29,9 @@
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="phone">Số điện thoại</label>
-                                            <input type="text" name="phone" class="form-control" id="phone" value="{{ old('phone', $user->phone_number) }}" placeholder="Nhập số điện thoại" />
+                                            <input type="text" name="phone" class="form-control" id="phone"
+                                                value="{{ old('phone', $user->phone_number) }}"
+                                                placeholder="Nhập số điện thoại" />
                                             @error('phone')
                                                 <small class="form-text text-muted text-danger">{{ $message }}</small>
                                             @enderror
@@ -36,13 +39,15 @@
                                     </div>
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="password">Mật khẩu (nếu thay đổi)</label>
-                                            <input type="password" name="password" class="form-control" id="password" placeholder="Nhập mật khẩu mới (nếu thay đổi)" />
-                                            @error('password')
+                                            <label for="telegram">Telegram</label>
+                                            <input type="text" name="telegram" class="form-control" id="telegram"
+                                                value="{{ old('telegram', $user->telegram) }}" placeholder="Nhập Telegram" />
+                                            @error('telegram')
                                                 <small class="form-text text-muted text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                             <div class="card-action">

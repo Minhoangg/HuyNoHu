@@ -13,11 +13,11 @@ class adminAccount extends Controller
     {
         // Lấy toàn bộ danh sách user có role = 2 từ bảng users
         $users = User::where('role', 2)->get();
-    
+
         // Truyền danh sách user sang view
         return view('admin.adminAccount.adminAccountList', compact('users'));
     }
-    
+
 
 
     public function create()
@@ -27,13 +27,13 @@ class adminAccount extends Controller
 
     public function createHandle(Request $request)
     {
-
         // Validate dữ liệu
         $validatedData = $request->validate([
             'name' => 'required|string|max:255', // Validate cho tên người dùng
             'phone' => 'required|string|min:10|max:15|unique:users,phone_number', // Validate cho số điện thoại
             'password' => 'required|string|min:6', // Validate cho mật khẩu
             'coin' => 'required|integer|min:0', // Validate cho số lượng xu
+            'telegram' => 'nullable|string|max:255', // Validate cho telegram (không bắt buộc)
         ], [
             'name.required' => 'Tên người dùng không được để trống.',
             'phone.required' => 'Số điện thoại không được để trống.',
@@ -45,6 +45,7 @@ class adminAccount extends Controller
             'coin.required' => 'Số lượng xu không được để trống.',
             'coin.integer' => 'Số lượng xu phải là một số nguyên.',
             'coin.min' => 'Số lượng xu phải lớn hơn hoặc bằng 0.',
+            'telegram.max' => 'Telegram không được quá 255 ký tự.',
         ]);
 
         // Thêm người dùng mới
@@ -52,14 +53,15 @@ class adminAccount extends Controller
             'name' => $validatedData['name'],
             'phone_number' => $validatedData['phone'],  // Cung cấp giá trị cho phone_number
             'password' => Hash::make($validatedData['password']),
-            'role' => 2,
+            'role' => 2,  // Mặc định là admin với role = 2
             'coin' => $validatedData['coin'],
+            'telegram' => $validatedData['telegram'], // Lưu telegram
         ]);
-
 
         // Chuyển hướng hoặc thông báo thành công
         return redirect()->route('system.user-getall')->with('success', 'Thêm người dùng thành công!');
     }
+
 
     public function deleteHandle($id)
     {
@@ -71,46 +73,55 @@ class adminAccount extends Controller
             $user->delete();
 
             // Thông báo thành công và chuyển hướng lại trang danh sách người dùng
-            return redirect()->route('system.user-getall')->with('success', 'Người dùng đã được xóa thành công!');
+            return redirect()->route('system.adminAccount-getall')->with('success', 'Người dùng đã được xóa thành công!');
         } else {
             // Nếu không tìm thấy người dùng, thông báo lỗi
-            return redirect()->route('system.user-getall')->with('error', 'Không tìm thấy người dùng.');
+            return redirect()->route('system.adminAccount-getall')->with('error', 'Không tìm thấy người dùng.');
         }
     }
 
     public function edit($id)
     {
         $user = User::findOrFail($id); // Lấy người dùng theo ID
-        return view('admin.user.userEdit', compact('user')); // Trả về view sửa người dùng với dữ liệu người dùng
+        return view('admin.adminAccount.adminAccountEdit', compact('user')); // Trả về view sửa người dùng với dữ liệu người dùng
     }
 
     public function editHandle(Request $request, $id)
-    {
-        // Validate dữ liệu
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|numeric|unique:users,phone_number,' . $id,
-            'password' => 'nullable|min:8',  // Không yêu cầu nếu không thay đổi mật khẩu
-        ]);
+{
+    // Tùy chỉnh thông báo lỗi cho từng trường
+    $messages = [
+        'name.required' => 'Tên là bắt buộc.',
+        'name.string' => 'Tên phải là một chuỗi ký tự.',
+        'name.max' => 'Tên không được vượt quá 255 ký tự.',
+        'phone.required' => 'Số điện thoại là bắt buộc.',
+        'phone.numeric' => 'Số điện thoại phải là một số.',
+        'telegram.string' => 'Telegram phải là một chuỗi ký tự.',
+        'telegram.max' => 'Telegram không được vượt quá 255 ký tự.',
+    ];
 
-        // Tìm người dùng cần sửa
-        $user = User::findOrFail($id);
+    // Validate dữ liệu với các thông báo lỗi tùy chỉnh
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'phone' => 'required|numeric',
+        'telegram' => 'nullable|string|max:255',  // Telegram là trường không bắt buộc
+    ], $messages);
 
-        // Cập nhật thông tin
-        $user->name = $request->input('name');
-        $user->phone_number = $request->input('phone');
+    // Tìm người dùng cần sửa
+    $user = User::findOrFail($id);
 
-        // Nếu có mật khẩu mới thì cập nhật mật khẩu
-        if ($request->input('password')) {
-            $user->password = bcrypt($request->input('password'));
-        }
+    // Cập nhật thông tin
+    $user->name = $request->input('name');
+    $user->phone_number = $request->input('phone');
+    $user->telegram = $request->input('telegram');  // Cập nhật trường telegram
 
-        // Lưu lại người dùng
-        $user->save();
+    // Lưu lại người dùng
+    $user->save();
 
-        // Chuyển hướng về danh sách người dùng và thông báo thành công
-        return redirect()->route('system.user-getall')->with('success', 'Cập nhật người dùng thành công!');
-    }
+    // Chuyển hướng về danh sách người dùng và thông báo thành công
+    return redirect()->route('system.adminAccount-getall')->with('success', 'Cập nhật người dùng thành công!');
+}
+
+
 
     public function addCoin(Request $request, $id)
     {
@@ -127,6 +138,6 @@ class adminAccount extends Controller
         $user->save();
 
         // Trở lại danh sách người dùng và thông báo thành công
-        return redirect()->route('system.user-getall')->with('success', 'Đã thêm xu thành công!');
+        return redirect()->route('system.adminAccount-getall')->with('success', 'Đã thêm xu thành công!');
     }
 }

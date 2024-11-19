@@ -51,7 +51,7 @@
                                                         <input type="number" name="coin" class="form-control" placeholder="Nhập xu" min="1" required style="width: 100px; display: inline-block;" />
                                                         <button type="submit" class="btn btn-warning" style="display: inline-block;">Thêm Xu</button>
                                                     </form>
-                                                    <a href="{{ route('system.user-edit', $user->id) }}" class="btn btn-primary">Sửa</a>
+                                                    {{-- <a href="{{ route('system.user-edit', $user->id) }}" class="btn btn-primary">Sửa</a> --}}
                                                     <a href="{{ route('system.user-delete', $user->id) }}" class="btn btn-danger"
                                                         onclick="event.preventDefault(); 
                                                         if (confirm('Bạn có chắc chắn muốn xóa người dùng này?')) {

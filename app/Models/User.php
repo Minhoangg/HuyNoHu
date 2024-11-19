@@ -50,4 +50,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function games()
+    {
+        return $this->belongsToMany(Game::class, 'user_game_sessions')
+            ->withPivot(['last_rate_received_at', 'round_min', 'round_max',  'percent'])
+            ->withTimestamps();
+    }
 }

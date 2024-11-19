@@ -25,4 +25,11 @@ class Game extends Model
     {
         return $this->belongsTo(Lobby::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_game_sessions')
+                    ->withPivot(['last_rate_received_at', 'round_min', 'round_max',  'percent'])
+                    ->withTimestamps(); // Bao gồm created_at và updated_at
+    }
 }

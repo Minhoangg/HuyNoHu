@@ -43,15 +43,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="form-group">
-                                        <label for="password">Mật khẩu (nếu thay đổi)</label>
-                                        <input type="password" name="password" class="form-control" id="password" placeholder="Nhập mật khẩu mới (nếu thay đổi)" />
-                                        @error('password')
-                                        <small class="form-text text-muted text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="card-action">

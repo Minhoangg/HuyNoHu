@@ -17,7 +17,15 @@
                     <div class="scannerThing"></div>
                     <div class='scannerOrigin'></div>
                 </div>
-                <div style="display: inline-block; font-size: 13px; color: aqua"> đang phân tích... </div>
+                <div style="color: yellow">
+                    @if ($percentage)
+                        Đã phân tích!
+                    @else
+                        Đang phân tích!
+                    @endif
+                </div>
+                
+
             </div>
         </div>
         <div class="loader d-flex justify-content-center align-items-center">
@@ -46,7 +54,7 @@
 
     </section>
 
-    <div id="language-screen">
+    <div id="language-screen" style="padding: 20px">
         <img id="imgGame" style="margin-left:10 " src="{{ asset('storage/' . $imgGame) }}" alt="ảnh"
             width="100px" height="100px">
         <div class="d-flex justify-content-center">
@@ -56,22 +64,47 @@
                 {{ $endTime ?: '00:00' }}</button>
         </div>
 
-
         <!-- Phần tử scan (sẽ hiển thị sau 3s khi nhấn nút) -->
         <div id="scan" style="display: none">
             <div class="fingerprint"></div>
             <h3> Nhận tỉ lệ</h3>
         </div>
 
-
         <!-- Nút bấm gọi Livewire action -->
+
+
+        <input type="hidden" id="user-coins" value="{{ Auth::user()->coin }}">
         <button style="font-size: 13px" id="french-button" wire:click="generateRandomPercentage()"
-            aria-label="Sélectionner la langue française">Nhận tỉ lệ</button>
+            aria-label="Sélectionner la langue française"
+            @if ($percentage) disabled @elseif($isContact) disabled @endif>
+            Nhận tỉ lệ
+        </button>
 
 
-        <input id="idpercentage" type="text" value="{{ $percentage }}">
-        <input id="id" type="hidden" value="{{ $id }}">
-        <input id="idroundText" type="hidden" value="{{ $roundText }}">
+        @if ($isContact)
+            <p id="contact-message" style="color: yellow; text-align: center">Liên hệ telegram {{ $contact }}
+                để
+                nhận thêm xu</p>
+        @endif
 
     </div>
 </div>
+
+<script>
+    document.getElementById('french-button').addEventListener('click', function() {
+
+        var scanElement = document.getElementById('scan');
+        var imgGame = document.getElementById('imgGame');
+
+        scanElement.style.display = 'block';
+        imgGame.style.display = 'none';
+
+        setTimeout(function() {
+            scanElement.style.display = 'none';
+            imgGame.style.display = 'none';
+        }, 3000);
+
+        exit;
+
+    });
+</script>

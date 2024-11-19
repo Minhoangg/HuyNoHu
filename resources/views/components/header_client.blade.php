@@ -8,38 +8,48 @@
             </div>
         </a>
         <!-- Toggle Button for Mobile -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="bg-light  navbar-toggler-icon rounded-2"></span>
         </button>
         <!-- Navbar Links -->
-        @if(!empty(session('user')))
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active text-light" aria-current="page" href="#">{{session('user.name')}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Xu: {{session('user.coin')}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Nạp Xu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Hỗ trợ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ route('client.logout') }}">Đăng xuất</a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" aria-current="page"
+                            href="#">{{ Auth::user()->name }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Xu: {{ Auth::user()->coin }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ route('client.logout') }}">Đăng xuất</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#" data-bs-toggle="modal"
+                            data-bs-target="#supportModal">Hỗ trợ</a>
+                    </li>
+                @endauth
             </ul>
         </div>
-        @else
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Hỗ trợ</a>
-                </li>
-            </ul>
-        </div>
-        @endif
     </div>
 </nav>
+
+<div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="supportModalLabel">Liên Hệ Telegram</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @Caoboisanhu
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
