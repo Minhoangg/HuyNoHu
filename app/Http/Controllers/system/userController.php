@@ -10,14 +10,25 @@ use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
-    public function getAll()
+    public function getAll(Request $request)
     {
-        // Lấy toàn bộ danh sách user từ bảng users
-        $users = User::where('role', 3)->get();
-
+        // Lấy toàn bộ danh sách user có role = 3 từ bảng users, đồng thời kiểm tra nếu có từ khóa tìm kiếm
+        $query = User::where('role', 3);
+    
+        // Kiểm tra nếu có từ khóa tìm kiếm
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where(function($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('phone_number', 'like', '%' . $request->search . '%');
+            });
+        }
+    
         // Truyền danh sách user sang view
+        $users = $query->get();
+    
         return view('admin.user.userList', compact('users'));
     }
+    
 
 
     public function create()

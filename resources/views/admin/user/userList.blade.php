@@ -14,6 +14,14 @@
                             <a href="{{ route('system.user-create') }}" class="btn btn-success">Thêm Người Dùng</a>
                         </div>
                         <div class="card-body">
+                            <!-- Search Form -->
+                            <form action="{{ route('system.user-getall') }}" method="GET" class="mb-3">
+                                <div class="input-group">
+                                    <input type="text" name="search" class="form-control" placeholder="Tìm kiếm theo tên hoặc số điện thoại" value="{{ request()->search }}">
+                                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                </div>
+                            </form>
+
                             <!-- Hiển thị thông báo thành công nếu có -->
                             @if (session('success'))
                                 <div class="alert alert-success">
@@ -38,12 +46,12 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $user->name }}</td>
-                                                
+
                                                 <!-- Hiển thị Số điện thoại nếu role của người dùng là 1 -->
                                                 @if(auth()->user()->role == 1)
                                                     <td>{{ $user->phone_number }}</td>
                                                 @endif
-                                                
+
                                                 <td>{{ $user->coin }}</td>
                                                 <td class="d-flex justify-content-between">
                                                     <form action="{{ route('system.user-add-coin', $user->id) }}" method="POST">
@@ -51,7 +59,6 @@
                                                         <input type="number" name="coin" class="form-control" placeholder="Nhập xu" min="1" required style="width: 100px; display: inline-block;" />
                                                         <button type="submit" class="btn btn-warning" style="display: inline-block;">Thêm Xu</button>
                                                     </form>
-                                                    {{-- <a href="{{ route('system.user-edit', $user->id) }}" class="btn btn-primary">Sửa</a> --}}
                                                     <a href="{{ route('system.user-delete', $user->id) }}" class="btn btn-danger"
                                                         onclick="event.preventDefault(); 
                                                         if (confirm('Bạn có chắc chắn muốn xóa người dùng này?')) {

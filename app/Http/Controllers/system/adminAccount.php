@@ -9,14 +9,26 @@ use Illuminate\Support\Facades\Hash;
 
 class adminAccount extends Controller
 {
-    public function getAll()
+    public function getAll(Request $request)
     {
-        // Lấy toàn bộ danh sách user có role = 2 từ bảng users
-        $users = User::where('role', 2)->get();
-
+        // Lấy toàn bộ danh sách user có role = 2 từ bảng users, đồng thời kiểm tra nếu có từ khóa tìm kiếm
+        $query = User::where('role', 2);
+        
+        // Kiểm tra nếu có từ khóa tìm kiếm
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where(function($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('phone_number', 'like', '%' . $request->search . '%')
+                  ->orWhere('telegram', 'like', '%' . $request->search . '%');
+            });
+        }
+    
         // Truyền danh sách user sang view
+        $users = $query->get();
+    
         return view('admin.adminAccount.adminAccountList', compact('users'));
     }
+    
 
 
 

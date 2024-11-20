@@ -14,6 +14,14 @@
                             <a href="{{ route('system.adminAccount-create') }}" class="btn btn-success">Thêm admin</a>
                         </div>
                         <div class="card-body">
+                            <!-- Search Form -->
+                            <form action="{{ route('system.adminAccount-getall') }}" method="GET" class="mb-3">
+                                <div class="input-group">
+                                    <input type="text" name="search" class="form-control" placeholder="Tìm kiếm theo tên, số điện thoại, hoặc Telegram" value="{{ request()->search }}">
+                                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                </div>
+                            </form>
+
                             <!-- Hiển thị thông báo thành công nếu có -->
                             @if (session('success'))
                                 <div class="alert alert-success">

@@ -14,7 +14,7 @@
             style="padding: 5px;display: inline; border: 4px solid #f33af3; 
     border-radius: 15px; 
     box-shadow: 0 4px 20px rgba(255, 0, 255, 0.5); 
-    color: yellow; 
+    color: white; 
     text-align: center;">
             {{ $nameGame }}</h4>
 
@@ -58,7 +58,7 @@
 
     </section>
 
-    <div id="language-screen" style="padding: 20px">
+    <div id="language-screen" style="padding: 0px 20px 20px 20px">
         <img id="imgGame" style="margin-left:10 " src="{{ asset('storage/' . $imgGame) }}" alt="ảnh"
             width="100px" height="100px">
         <div class="d-flex justify-content-center">
