@@ -114,7 +114,7 @@
 
         <p id="contact-message" style="color: yellow; text-align: center">
             @if ($contact)
-                Liên hệ telegram   {{ $contact }} để nhận thêm xu
+                Liên hệ telegram  <a href="{{ $contact }}">{{ $contact }}</a>   để nhận thêm xu
             @else
             Liên hệ telegram <a href="https://t.me/Caoboisanhu">Cao bồi săn hủ</a> {{ $contact }} để nhận thêm xu
             @endif

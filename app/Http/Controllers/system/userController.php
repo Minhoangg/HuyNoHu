@@ -51,12 +51,13 @@ class userController extends Controller
 
         // Validate dữ liệu
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255', // Validate cho tên người dùng
+            'name' => 'required|string|max:255|unique:users,name', // Validate cho tên người dùng
             'phone' => 'required|string|min:10|max:15|unique:users,phone_number', // Validate cho số điện thoại
             'password' => 'required|string|min:6', // Validate cho mật khẩu
             'coin' => 'required|integer|min:0', // Validate cho số lượng xu
         ], [
             'name.required' => 'Tên người dùng không được để trống.',
+            'name.unique' => 'Tên đăng nhập đã tồn tại.',
             'phone.required' => 'Số điện thoại không được để trống.',
             'phone.min' => 'Số điện thoại phải có ít nhất 10 ký tự.',
             'phone.max' => 'Số điện thoại không được vượt quá 15 ký tự.',
