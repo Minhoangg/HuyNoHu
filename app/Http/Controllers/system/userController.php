@@ -12,12 +12,21 @@ class userController extends Controller
 {
     public function getAll(Request $request)
     {
-        // Lấy toàn bộ danh sách user có role = 3 từ bảng users, đồng thời kiểm tra nếu có từ khóa tìm kiếm
-        $query = User::where('role', 3);
+        // Lấy thông tin user hiện tại
+        $currentUser = Auth::user();
+    
+        // Kiểm tra nếu user hiện tại có role = 2
+        if ($currentUser->role == 2) {
+            // Chỉ lấy danh sách user có cùng ID với user hiện tại
+            $query = User::where('parent_id', $currentUser->id);
+        } else {
+            // Nếu không phải role 2, lấy danh sách user có role = 3
+            $query = User::where('role', 3);
+        }
     
         // Kiểm tra nếu có từ khóa tìm kiếm
         if ($request->has('search') && !empty($request->search)) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
                   ->orWhere('phone_number', 'like', '%' . $request->search . '%');
             });
@@ -28,6 +37,7 @@ class userController extends Controller
     
         return view('admin.user.userList', compact('users'));
     }
+    
     
 
 
